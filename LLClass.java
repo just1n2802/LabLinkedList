@@ -37,8 +37,30 @@ class LLClass {
 
     public static void main(String[] args) {
         inputMenu();
-        
+        demo();
 
+    }
+
+    public static void demo() {
+        System.out.println("For demonstration purposes;");
+        System.out.println("The LinkedList will be reversed utilizing the following methods:");
+        System.out.println("addFirst");
+        System.out.println("getFirst");
+        System.out.println("removeFirst");
+        System.out.println("");
+        System.out.println("Original LinkedList: ");
+        System.out.println(LLClass.list);
+        System.out.println(reverse());
+    }
+
+    public static LinkedList<Integer> reverse() {
+        LinkedList<Integer> reverseList = new LinkedList<Integer>();
+        ListIterator<Integer> listIterator = LLClass.list.listIterator();
+        while (listIterator.hasNext()) {
+            reverseList.addFirst(list.getFirst());
+            list.removeFirst();
+        }
+        return reverseList;
     }
 
     public static void inputMenu() {
