@@ -25,6 +25,7 @@
 
 import java.util.Scanner;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 class LLClass {
     public static LinkedList<Integer> list = new LinkedList<Integer>();
@@ -35,15 +36,22 @@ class LLClass {
     }
 
     public static void main(String[] args) {
+        inputMenu();
+        
+
+    }
+
+    public static void inputMenu() {
         System.out.println("Enter integer to LinkedList or -1 to exit");
         System.out.printf(":> ");
         int inp = getInput();
         if (inp != -1) {
-            LLClass.list.add(inp);
+            LLClass.list.addLast(inp);
+            inputMenu();
         } else {
-            inner.sum(LLClass.list);
+            System.out.println("sum of entries: ");
+            System.out.println(inner.sum(LLClass.list));
         }
-
     }
 
     public static int getInput() {
@@ -61,9 +69,12 @@ class LLClass {
 }
 
 class inner extends LLClass {
-    public static int sum = 0;
-    public static LinkedList<Integer> sum(LinkedList<Integer> list) {
-
-        return list;
+    public static int sumnum = 0;
+    public static int sum(LinkedList<Integer> list) {
+        ListIterator<Integer> listIterator = LLClass.list.listIterator();
+        while (listIterator.hasNext()) {
+            sumnum += listIterator.next();
+        }
+        return sumnum;
     }
 }
